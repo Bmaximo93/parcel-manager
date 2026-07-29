@@ -1,0 +1,13 @@
+.env
+.env.*
+.git
+.gitignore
+coverage
+test
+*.md
+requests.http
+Dockerfile
+.dockerignore
+node_modules
+dist
+src/generated
