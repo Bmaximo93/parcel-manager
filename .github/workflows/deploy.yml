@@ -28,11 +28,16 @@ jobs:
 
       - run: gcloud auth configure-docker us-east1-docker.pkg.dev --quiet
 
+      - uses: docker/setup-buildx-action@v3
+
       - name: Build and push image
-        working-directory: api
-        run: |
-          docker build -t "$IMAGE" .
-          docker push "$IMAGE"
+        uses: docker/build-push-action@v6
+        with:
+          context: api
+          push: true
+          tags: ${{ env.IMAGE }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
 
       - name: Deploy to Cloud Run
         run: |
