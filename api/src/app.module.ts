@@ -7,7 +7,8 @@ import { HealthModule } from './health/health.module';
 import { PrismaModule } from './prisma/prisma.module';
 
 const envSchema = z.object({
-  DATABASE_URL: z.string().url(),
+  DATABASE_URL: z.url(),
+  CORS_ORIGINS: z.url(),
 });
 
 @Module({
